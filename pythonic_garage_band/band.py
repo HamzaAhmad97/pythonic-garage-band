@@ -210,3 +210,81 @@ class Bassist(Musician):
 
         """
         return f"Bassist instance. Name = {self.name}"
+
+
+class Drummer(Musician):
+    """
+    An class to represent a Drummer.
+
+    Attributes
+    ----------
+    name : string
+        name of Drummer
+    INSTRUMENT : string (class attribute)
+        drums
+
+    Methods
+    -------
+    play_solo():
+        Returns a solo played by a Drummer
+    get_instrument():
+        returns drums
+    """
+    INSTRUMENT = 'drums'
+
+    def __init__(self, name):
+        """
+        The constructor method for the class Drummer
+
+        Parameters
+        ----------
+        name : string
+                The name of the Drummer
+        """
+        self.name = name
+
+    def play_solo(self):
+        """
+        Return a solo played by the current Drummer instance
+
+        Returns
+        -------
+        string
+            a solo played by a Drummer
+        """
+        return "rattle boom crash"
+
+    def get_instrument(self):
+        """
+        Return drums
+
+        Returns
+        -------
+        string
+            the instrument, which is the drums
+        """
+        return Drummer.INSTRUMENT
+
+    def __str__(self):
+        """
+        Return a string representation for a band instance by str()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a band instance by str() print()
+
+        """
+        return f"My name is {self.name} and I play {Drummer.INSTRUMENT}"
+
+    def __repr__(self):
+        """
+        Return a string representation for a Drummer instance by str()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a Drummer instance by str() print()
+
+        """
+        return f"Drummer instance. Name = {self.name}"
