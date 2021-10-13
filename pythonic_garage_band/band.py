@@ -1,6 +1,97 @@
 from abc import ABC, abstractmethod
 
 
+class Band:
+    """
+    A class to represent a band.
+
+    Attributes
+    ----------
+    name : str
+        name of band
+    members : list
+        members of the band
+
+    Methods
+    -------
+    play_solos():
+        Returns a list of solos by each member.
+    to_list(): class method
+        returns the prviously created band instances.
+    """
+    instances = []
+
+    def __init__(self, name, members=[]):
+        """
+        The constructor method for the class Musician
+
+        Parameters
+        ----------
+        name : string
+                The name of the band
+        members : list
+                members of the band
+        """
+        self.name = name
+        self.members = members
+
+        Band.instances.append(self)
+
+    def play_solos(self):
+        """
+        Return the solos played by each member
+
+        Returns
+        -------
+        list
+            Returns a list of solos (strings) by each member
+
+        """
+        return [member.play_solo() for member in self.members]
+
+    def __str__(self):
+        """
+        Return a string representation for a band instance by str()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a band instance by str() print()
+
+        """
+        return f"We are {self.name}, and we are {len(self.members)} members."
+
+    def __repr__(self):
+        """
+        Return a string representation for a band instance by repr()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a band instance by repr()
+
+        """
+        return f"Band instance. Name = {self.name}. Members = {self.members} "
+
+    @classmethod
+    def to_list(cls):
+        """
+        Return all the created band instances til the now (class method)
+
+        Parameters
+        ----------
+        cls : Band
+            The current Band instance
+
+        Returns
+        -------
+        list
+            Returns a string representation for a band instance by str()
+
+        """
+        return cls.instances
+
+
 class Musician(ABC):
     """
     An abstract class to represent a musician.
