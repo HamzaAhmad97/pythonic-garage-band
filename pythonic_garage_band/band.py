@@ -55,6 +55,7 @@ class Musician(ABC):
         """
         pass
 
+
 class Guitarist(Musician):
     """
     An class to represent a Guitarist.
@@ -131,3 +132,81 @@ class Guitarist(Musician):
 
         """
         return f"Guitarist instance. Name = {self.name}"
+
+
+class Bassist(Musician):
+    """
+    An class to represent a Bassist.
+
+    Attributes
+    ----------
+    name : string
+        name of Bassist
+    INSTRUMENT : string (class attribute)
+        bass
+
+    Methods
+    -------
+    play_solo():
+        Returns a solo played by a Bassist
+    get_instrument():
+        returns bass
+    """
+    INSTRUMENT = 'bass'
+
+    def __init__(self, name):
+        """
+        The constructor method for the class Bassist
+
+        Parameters
+        ----------
+        name : string
+                The name of the Bassist
+        """
+        self.name = name
+
+    def play_solo(self):
+        """
+        Return a solo played by the current Bassist instance
+
+        Returns
+        -------
+        string
+            a solo played by a Bassist
+        """
+        return "bom bom buh bom"
+
+    def get_instrument(self):
+        """
+        Return bass
+
+        Returns
+        -------
+        string
+            the instrument, which is the bass
+        """
+        return Bassist.INSTRUMENT
+
+    def __str__(self):
+        """
+        Return a string representation for a Bassist instance by str()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a Bassist instance by str() print()
+
+        """
+        return f"My name is {self.name} and I play {Bassist.INSTRUMENT}"
+
+    def __repr__(self):
+        """
+        Return a string representation for a Bassist instance by repr()
+
+        Returns
+        -------
+        string
+            Returns a string representation for a Bassist instance by str() repr()
+
+        """
+        return f"Bassist instance. Name = {self.name}"
