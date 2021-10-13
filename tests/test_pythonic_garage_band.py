@@ -1,10 +1,4 @@
 import pytest
-from pythonic_garage_band import __version__
-
-
-def test_version():
-    assert __version__ == '0.1.0'
-
 
 from pythonic_garage_band.band import (
     Band,
@@ -17,6 +11,9 @@ from pythonic_garage_band.band import (
 
 @pytest.mark.skip("todo")
 def test_guitarist_str():
+    """
+    test if the guitarist instance's string representation returns the correct value
+    """
     joan = Guitarist("Joan Jett")
     actual = str(joan)
     expected = "My name is Joan Jett and I play guitar"
@@ -25,6 +22,9 @@ def test_guitarist_str():
 
 @pytest.mark.skip("todo")
 def test_guitarist_repr():
+    """
+    test if the string representation of a guitarist using repr returns the correct data
+    """
     joan = Guitarist("Joan Jett")
     actual = repr(joan)
     expected = "Guitarist instance. Name = Joan Jett"
@@ -33,6 +33,9 @@ def test_guitarist_repr():
 
 @pytest.mark.skip("todo")
 def test_drummer_str():
+    """
+    test if the Drummer instance's string representation returns the correct value
+    """
     sheila = Drummer("Sheila E.")
     actual = str(sheila)
     expected = "My name is Sheila E. and I play drums"
@@ -41,6 +44,9 @@ def test_drummer_str():
 
 @pytest.mark.skip("todo")
 def test_drummer_repr():
+    """
+    test if the string representation of a Drummer using repr returns the correct data
+    """
     sheila = Drummer("Sheila E.")
     actual = repr(sheila)
     expected = "Drummer instance. Name = Sheila E."
@@ -49,6 +55,9 @@ def test_drummer_repr():
 
 @pytest.mark.skip("todo")
 def test_bassist_str():
+    """
+    test if the Bassist instance's string representation returns the correct value
+    """
     meshell = Bassist("Meshell Ndegeocello")
     actual = str(meshell)
     expected = "My name is Meshell Ndegeocello and I play bass"
@@ -57,6 +66,9 @@ def test_bassist_str():
 
 @pytest.mark.skip("todo")
 def test_bassist_repr():
+    """
+    test if the string representation of a Bassist using repr returns the correct data
+    """
     meshell = Bassist("Meshell Ndegeocello")
     actual = repr(meshell)
     expected = "Bassist instance. Name = Meshell Ndegeocello"
@@ -65,6 +77,9 @@ def test_bassist_repr():
 
 @pytest.mark.skip("todo")
 def test_band_name():
+    """
+    test if a band name can be retrieved with no errors
+    """
     nirvana = Band("Nirvana", [])
 
     assert nirvana.name == "Nirvana"
@@ -72,6 +87,9 @@ def test_band_name():
 
 @pytest.mark.skip("todo")
 def test_guitarist():
+    """
+    test the creation of a guitarist instance and for accessing its properties
+    """
     jimi = Guitarist("Jimi Hendrix")
     assert jimi.name == "Jimi Hendrix"
     assert jimi.get_instrument() == "guitar"
@@ -79,6 +97,9 @@ def test_guitarist():
 
 @pytest.mark.skip("todo")
 def test_bassist():
+    """
+    test the creation of a Bassist instance and for accessing its properties
+    """
     flea = Bassist("Flea")
     assert flea.name == "Flea"
     assert flea.get_instrument() == "bass"
@@ -86,6 +107,9 @@ def test_bassist():
 
 @pytest.mark.skip("todo")
 def test_drummer():
+    """
+    test the creation of a Drummer instance and for accessing its properties
+    """
     ginger = Drummer("Ginger Baker")
     assert ginger.name == "Ginger Baker"
     assert ginger.get_instrument() == "drums"
@@ -93,6 +117,12 @@ def test_drummer():
 
 @pytest.mark.skip("todo")
 def test_instruments(one_band):
+    """
+    test if we can get the instruments of all musician instances from the members of a band
+
+    Args:
+        one_band (Band): [a band instance]
+    """
     instruments = ["guitar", "bass", "drums"]
     for i, member in enumerate(one_band.members):
         # NOTE: see stretch goal where zip used
@@ -101,6 +131,12 @@ def test_instruments(one_band):
 
 @pytest.mark.skip("todo")
 def test_individual_solos(one_band):
+    """
+    test if the musician instances method get_instrument and play_solo return the correct data
+
+    Args:
+        one_band (Band): [a band instance]
+    """
     for member in one_band.members:
         if member.get_instrument() == "guitar":
             assert member.play_solo() == "face melting guitar solo"
@@ -112,6 +148,12 @@ def test_individual_solos(one_band):
 
 @pytest.mark.skip("todo")
 def test_band_members(one_band):
+    """
+    test a band instance member property
+
+    Args:
+        one_band (Band): [a band instance]
+    """
 
     assert len(one_band.members) == 3
 
@@ -130,6 +172,12 @@ def test_band_members(one_band):
 
 @pytest.mark.skip("todo")
 def test_play_solos_for_whole_band(one_band):
+    """
+    test a band instance's play_solos method
+
+    Args:
+        one_band (Band): [a band instance]
+    """
     solos = one_band.play_solos()
     assert len(solos) == 3
     assert solos[0] == "face melting guitar solo"
@@ -139,6 +187,9 @@ def test_play_solos_for_whole_band(one_band):
 
 @pytest.mark.skip("todo")
 def test_class_tracks_instances():
+    """
+    test the to_list method of a band instance
+    """
     assert Band.to_list() == []
     the_nobodies = Band("The Nobodies", [])
     assert len(Band.instances) == 1
@@ -147,6 +198,9 @@ def test_class_tracks_instances():
 
 @pytest.mark.skip("todo")
 def test_to_list():
+    """
+    test the to_list method of a band instance
+    """
     assert Band.to_list() == []
     the_nobodies = Band("The Nobodies", [])
     all_bands = Band.to_list()
@@ -161,6 +215,12 @@ def test_to_list():
 
 @pytest.fixture
 def nirvana_data():
+    """
+    return a dictionary of data for creating a band instance
+
+    Returns:
+        dictionary: the name and data for creating musician instances for a band
+    """
     return {
         "name": "Nirvana",
         "members": [
@@ -173,6 +233,12 @@ def nirvana_data():
 
 @pytest.fixture
 def one_band():
+    """
+    create and return a band instnace
+
+    Returns:
+        Band: a music band having a name and a list of musicions
+    """
     members = [
         Guitarist("Kurt Cobain"),
         Bassist("Krist Novoselic"),
